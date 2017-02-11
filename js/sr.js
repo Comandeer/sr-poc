@@ -147,6 +147,10 @@
 	}
 
 	function focus( element ) {
+		if ( element === document.body ) {
+			element = document.documentElement;
+		}
+
 		element.setAttribute( 'data-sr-current', true );
 		element.focus();
 
