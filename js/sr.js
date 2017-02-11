@@ -131,7 +131,7 @@
 			}
 
 			return true;
-		} )
+		} );
 
 		focusList.forEach( ( element ) => {
 			element.setAttribute( 'tabindex', element.tabIndex );
