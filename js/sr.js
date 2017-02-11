@@ -121,7 +121,7 @@
 	}
 
 	function createFocusList() {
-		focusList.push( ...document.querySelectorAll( 'html, body >:not( [aria-hidden=true] ):not( [hidden] ):not( script):not( meta )' ) )
+		focusList.push( ...document.querySelectorAll( 'html, body >:not( [aria-hidden=true] )' ) )
 
 		focusList = focusList.filter( ( element ) => {
 			const styles = getComputedStyle( element );
@@ -139,7 +139,7 @@
 	}
 
 	function getActiveElement() {
-		if ( document.activeElement ) {
+		if ( document.activeElement && document.activeElement !== document.body ) {
 			return document.activeElement;
 		}
 
