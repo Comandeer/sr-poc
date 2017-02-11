@@ -4,9 +4,6 @@
 	let isRunning = false;
 	let focusList = [];
 	let focusIndex = 0;
-	let voices;
-	let lang;
-	let voice;
 
 	const mappings = {
 		a: 'link',
@@ -77,16 +74,6 @@
 		}`;
 
 		document.head.appendChild( styleElement );
-	}
-
-	function getPageLang() {
-		return document.documentElement.getAttribute( 'lang' ).trim() || 'en';
-	}
-
-	function getVoiceForLang( lang ) {
-		return voices.filter( ( voice ) => {
-			return voice.lang.startsWith( lang );
-		} ).shift();
 	}
 
 	function say( speech, callback ) {
@@ -230,21 +217,8 @@
 		}
 	}
 
-	voices = speechSynthesis.getVoices();
-
-	// Chrome populate list only after event.
-	if ( voices.length === 0 && speechSynthesis.addEventListener ) {
-		speechSynthesis.addEventListener( 'voiceschanged', function handler() {
-			voices = speechSynthesis.getVoices();
-
-			speechSynthesis.removeEventListener( 'voiceschanged', handler );
-		} );
-	}
-
 	addStyles();
 	createFocusList();
-	lang = getPageLang();
-	voice = getVoiceForLang( lang );
 
 	document.addEventListener( 'keydown', keyDownHandler );
 }( document ) );
