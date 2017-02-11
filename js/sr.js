@@ -121,7 +121,7 @@
 	}
 
 	function createFocusList() {
-		focusList.push( ...document.querySelectorAll( 'html, body >:not( [aria-hidden=true] )' ) )
+		focusList.push( ...document.querySelectorAll( 'html, body >:not( [aria-hidden=true] )' ) );
 
 		focusList = focusList.filter( ( element ) => {
 			const styles = getComputedStyle( element );
